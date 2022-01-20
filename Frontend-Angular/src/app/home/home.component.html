@@ -1,0 +1,96 @@
+<nav class="#e0e0e0 grey lighten-2">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center ">
+        <i class="material-icons">description</i>Reportes</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a (click)="Logout()">Cerrar Sesion</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+
+<div >
+  
+
+
+  <div class="row mt 4">
+
+    <div class="col s12 m5">
+      <div class="card">
+        <div class="card-body">
+          <h5 >Agregar Reporte</h5>
+          <div class="row">
+            <form [formGroup] = "form" (ngSubmit) = "guardarReporte()" class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input formControlName = "Proveedor" placeholder="Proveedor" id="Proveedor" type="text" class="form-control">
+                </div>
+                <div class="input-field col s6">
+                  <input formControlName = "Monto"  placeholder = "Monto" id="monto" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input formControlName = "Moneda"  placeholder = "Moneda" id="moneda" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input formControlName = "Fecha" placeholder = "Fecha" id="fecha" type="text" class="form-control">
+                  
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input formControlName = "Comentario" placeholder = "Comentario" id="Comentario" type="text" class="form-control">
+                  
+                </div>
+              </div>
+              <button type="submit" class="btn-large btn-submit">Aceptar</button>
+            </form>
+          </div>       
+        </div>
+      </div>
+    </div>
+    
+    <div class="col s12 m7">
+      <div class="card">
+        
+          <h5 >Listado de Reportes</h5>
+          <table class="table"> 
+            <thead>
+              <tr >
+                  <th>id</th>
+                  <th>Proveedor</th>
+                  <th>Monto</th>
+                  <th>Moneda</th>
+                  <th>Fecha</th>
+                  <th>Comentario</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr *ngFor = " let reportes of listReportes ">
+                <td>{{reportes.id}}</td>
+                <td>{{reportes.proveedor}}</td>
+                <td>{{reportes.monto}}</td>
+                <td>{{reportes.moneda}}</td>
+                <td>{{reportes.fecha}}</td>
+                <td>{{reportes.comentario}}</td>
+                <td><i (click)="editarReporte(reportes)"class="fas fa-edit text-info"></i></td>
+                <td><i (click) = "eliminarReporte(reportes.id)" class="fas fa-trash text-danger"></i></td>
+              </tr>
+              
+            </tbody>
+          </table>
+        
+      </div>
+    </div>
+    
+
+  </div>
+</div>
+
+
